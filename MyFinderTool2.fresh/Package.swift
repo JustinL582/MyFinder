@@ -20,7 +20,8 @@ let package = Package(
                       "FileOps.swift",
                       "BrowserViewModel.swift",
                       "FileViews.swift",
-                      "RowView.swift"]
+                      "RowView.swift",
+                      "Localization.swift"]
         )
     ]
 )

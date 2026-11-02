@@ -1,0 +1,60 @@
+/* MyFinder — English UI. Keys are the original Chinese source strings. */
+
+/* Sidebar */
+"个人收藏" = "Favorites";
+"桌面" = "Desktop";
+"文稿" = "Documents";
+"下载" = "Downloads";
+
+/* Toolbar */
+"视图" = "View";
+"切换视图" = "Switch view";
+"图标" = "Icons";
+"列表" = "List";
+"分栏" = "Columns";
+"画廊" = "Gallery";
+"新建文件夹" = "New Folder";
+"选择文件夹" = "Choose Folder";
+"搜索" = "Search";
+
+/* Status bar */
+"%d 个项目" = "%d items";
+"合计 %@" = "Total %@";
+"缓存大小" = "Cache sizes";
+
+/* Columns / sorting */
+"名称" = "Name";
+"大小" = "Size";
+"种类" = "Kind";
+"修改日期" = "Date Modified";
+"排序方式" = "Sort By";
+"改为升序" = "Ascending";
+"改为降序" = "Descending";
+
+/* Context menu */
+"打开" = "Open";
+"用默认程序打开" = "Open With Default App";
+"快速查看" = "Quick Look";
+"重命名…" = "Rename…";
+"拷贝路径" = "Copy Path";
+"在 Finder 中显示" = "Show in Finder";
+"移到废纸篓" = "Move to Trash";
+
+/* Dialogs */
+"重命名" = "Rename";
+"取消" = "Cancel";
+"出错了" = "Something went wrong";
+"好" = "OK";
+"空文件夹" = "Empty folder";
+
+/* Errors */
+"无法打开「%@」：%@" = "Couldn’t open “%@”: %@";
+"新建文件夹失败：%@" = "Couldn’t create folder: %@";
+"重命名失败：%@" = "Couldn’t rename: %@";
+"移到废纸篓失败：%@" = "Couldn’t move to Trash: %@";
+
+/* File naming / fallbacks */
+"未命名文件夹" = "untitled folder";
+"副本" = "copy";
+"文件夹" = "Folder";
+"文件" = "File";

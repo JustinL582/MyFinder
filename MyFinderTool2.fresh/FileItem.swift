@@ -35,7 +35,7 @@ final class FileItem: Identifiable {
         let isDir = rv?.isDirectory ?? false
         self.isDirectory = isDir
         self.name = rv?.localizedName ?? url.lastPathComponent
-        self.kind = rv?.localizedTypeDescription ?? (isDir ? "文件夹" : "文稿")
+        self.kind = rv?.localizedTypeDescription ?? (isDir ? L("文件夹") : L("文件"))
         self.modDate = rv?.contentModificationDate
         if isDir {
             self.size = nil

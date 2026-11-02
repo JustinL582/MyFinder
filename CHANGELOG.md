@@ -1,5 +1,17 @@
 # CHANGELOG — 自建 Finder
 
+## 2026-11-02 — 英文版
+
+### 新增
+- 界面本地化：英文 / 简体中文。中文源文案作 key，英文翻译在 `Resources/en.lproj/Localizable.strings`；打包后的 App 跟随系统语言。非 SwiftUI 字面量（枚举标签、错误信息、默认文件名）统一走 `Localization.swift` 的 `L()`。
+- App 显示名本地化（英文 `MyFinder` / 中文 `自建 Finder`）。
+- `启动英文版.command`：不受系统语言影响，以英文界面启动。
+- 英文文档 `README.en.md`。
+
+### 其他
+- `打包App.command` 现会拷入 `*.lproj` 并写入 `CFBundleLocalizations`。
+- 提交继续使用匿名 noreply 邮箱。
+
 ## 2026-11-02 — 排序、图标与打包
 
 ### 新增

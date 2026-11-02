@@ -35,6 +35,9 @@
 | `BrowserViewModel.swift` | `@MainActor @Observable`：导航、排序、搜索、按层后台算体积、文件操作 |
 | `FileViews.swift` | 列表(Table)/图标/分栏(Miller)/画廊 四个视图 + 右键菜单 |
 | `RowView.swift` | 单元格与图标 tile（真实系统图标 + 计算中转圈） |
+| `Localization.swift` | `L()`：非 SwiftUI 字面量的本地化（中文源文案作 key） |
+
+资源在仓库根 `Resources/`（`en.lproj` / `zh-Hans.lproj`），由 `打包App.command` 拷进 `.app`。新增界面文案时：SwiftUI 字面量直接写中文，同时在 `en.lproj/Localizable.strings` 补译文；`String` 变量/三元表达式/错误信息用 `L()`。
 
 ## 关键约定（为什么这样做见 `Memory/`）
 

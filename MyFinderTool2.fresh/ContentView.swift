@@ -78,9 +78,9 @@ struct ContentView: View {
 
     private var statusBar: some View {
         HStack {
-            Text("\(vm.items.count) 个项目")
+            Text(L("%d 个项目", vm.items.count))
             Text("·")
-            Text("合计 \(ByteCountFormatter.string(fromByteCount: Int64(vm.totalSize), countStyle: .file))")
+            Text(L("合计 %@", ByteCountFormatter.string(fromByteCount: Int64(vm.totalSize), countStyle: .file)))
             Spacer()
             Toggle("缓存大小", isOn: $vm.cacheEnabled)
                 .toggleStyle(.checkbox)

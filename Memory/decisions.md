@@ -35,4 +35,4 @@
 SwiftUI 默认关最后一个窗口不退出、进程驻留后台占内存。加 `AppDelegate` 实现 `applicationShouldTerminateAfterLastWindowClosed → true`，经 `@NSApplicationDelegateAdaptor` 接入。
 
 ### 打包与隐私
-`打包App.command`：release 编译 → 组装 `MyFinder.app`（`MacOS/` 二进制、`Resources/MyFinder.icns`、`Info.plist`）→ ad-hoc 签名。图标由 AppKit 矢量脚本渲染各尺寸 + `iconutil` 生成 `.icns`。仓库公开，提交统一用匿名 `255309524+JustinL582@users.noreply.github.com`（全局 git 邮箱也已改），Bundle ID 去掉个人名改为 `com.myfinder.app`。
+`打包App.command`：release 编译 → 组装 `MyFinder.app`（`MacOS/` 二进制、`Resources/MyFinder.icns`、`Info.plist`）→ ad-hoc 签名。图标由 AppKit 矢量脚本渲染各尺寸 + `iconutil` 生成 `.icns`。仓库公开，提交统一用 GitHub 的匿名 noreply 邮箱（全局 git 邮箱也已改），Bundle ID 去掉个人名改为 `com.myfinder.app`。

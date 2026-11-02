@@ -7,7 +7,7 @@ extension View {
     @ViewBuilder
     func itemContextMenu(for item: FileItem, vm: BrowserViewModel) -> some View {
         self.contextMenu {
-            Button(item.isDirectory ? "打开" : "用默认程序打开") { vm.open(item) }
+            Button(item.isDirectory ? L("打开") : L("用默认程序打开")) { vm.open(item) }
             Button("快速查看") { vm.quickLookURL = item.url }
             Divider()
             Button("重命名…") { vm.beginRename(item) }
@@ -49,7 +49,7 @@ struct SortByMenu: View {
                 }
             }
             Divider()
-            Button(vm.sortAscending ? "改为降序" : "改为升序") { vm.toggleSortOrder() }
+            Button(vm.sortAscending ? L("改为降序") : L("改为升序")) { vm.toggleSortOrder() }
                 .disabled(vm.currentSortKey == nil)
         }
     }
@@ -88,7 +88,7 @@ struct FileListView: View {
         }
         .contextMenu(forSelectionType: FileItem.ID.self) { ids in
             if let item = vm.item(ids.first) {
-                Button(item.isDirectory ? "打开" : "用默认程序打开") { vm.open(item) }
+                Button(item.isDirectory ? L("打开") : L("用默认程序打开")) { vm.open(item) }
                 Button("快速查看") { vm.quickLookURL = item.url }
                 Divider()
                 Button("重命名…") { vm.beginRename(item) }

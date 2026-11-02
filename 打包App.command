@@ -18,6 +18,8 @@ rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$BIN" "$APP/Contents/MacOS/MyFinder"
 [ -f "$ICNS" ] && cp "$ICNS" "$APP/Contents/Resources/MyFinder.icns"
+# 本地化资源（en / zh-Hans），Bundle.main 会按系统语言自动选用
+[ -d "$ROOT/Resources" ] && cp -R "$ROOT"/Resources/*.lproj "$APP/Contents/Resources/"
 
 cat > "$APP/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -27,6 +29,8 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
   <key>CFBundleName</key><string>MyFinder</string>
   <key>CFBundleDisplayName</key><string>自建 Finder</string>
   <key>CFBundleIdentifier</key><string>com.myfinder.app</string>
+  <key>CFBundleDevelopmentRegion</key><string>zh-Hans</string>
+  <key>CFBundleLocalizations</key><array><string>zh-Hans</string><string>en</string></array>
   <key>CFBundleExecutable</key><string>MyFinder</string>
   <key>CFBundleIconFile</key><string>MyFinder</string>
   <key>CFBundlePackageType</key><string>APPL</string>

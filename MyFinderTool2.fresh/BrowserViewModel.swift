@@ -18,8 +18,8 @@ final class BrowserViewModel {
         var id: String { rawValue }
         var label: String {
             switch self {
-            case .name: return "名称"; case .kind: return "种类"
-            case .date: return "修改日期"; case .size: return "大小"
+            case .name: return L("名称"); case .kind: return L("种类")
+            case .date: return L("修改日期"); case .size: return L("大小")
             }
         }
         /// Finder's defaults: names/kinds ascending, dates & sizes descending.
@@ -50,8 +50,8 @@ final class BrowserViewModel {
         var id: String { rawValue }
         var label: String {
             switch self {
-            case .icons: return "图标"; case .list: return "列表"
-            case .columns: return "分栏"; case .gallery: return "画廊"
+            case .icons: return L("图标"); case .list: return L("列表")
+            case .columns: return L("分栏"); case .gallery: return L("画廊")
             }
         }
         var symbol: String {
@@ -102,9 +102,9 @@ final class BrowserViewModel {
         var locs: [SidebarLocation] = []
         let home = fm.homeDirectoryForCurrentUser
         locs.append(SidebarLocation(label: NSUserName(), symbol: "house", url: home))
-        if let l = loc(.desktopDirectory, "桌面", "menubar.dock.rectangle") { locs.append(l) }
-        if let l = loc(.documentDirectory, "文稿", "doc") { locs.append(l) }
-        if let l = loc(.downloadsDirectory, "下载", "arrow.down.circle") { locs.append(l) }
+        if let l = loc(.desktopDirectory, L("桌面"), "menubar.dock.rectangle") { locs.append(l) }
+        if let l = loc(.documentDirectory, L("文稿"), "doc") { locs.append(l) }
+        if let l = loc(.downloadsDirectory, L("下载"), "arrow.down.circle") { locs.append(l) }
         sidebarLocations = locs
 
         navigate(to: home, pushHistory: false)
@@ -172,7 +172,7 @@ final class BrowserViewModel {
             startSizeScan()
         } catch {
             items = []
-            errorMessage = "无法打开「\(url.lastPathComponent)」：\(error.localizedDescription)"
+            errorMessage = L("无法打开「%@」：%@", url.lastPathComponent, error.localizedDescription)
         }
     }
 
@@ -281,7 +281,7 @@ final class BrowserViewModel {
             reload()
             selection = items.first { $0.url == url }?.id
         } catch {
-            errorMessage = "新建文件夹失败：\(error.localizedDescription)"
+            errorMessage = L("新建文件夹失败：%@", error.localizedDescription)
         }
     }
 
@@ -303,7 +303,7 @@ final class BrowserViewModel {
             _ = try FileOps.rename(item.url, to: trimmed)
             reload()
         } catch {
-            errorMessage = "重命名失败：\(error.localizedDescription)"
+            errorMessage = L("重命名失败：%@", error.localizedDescription)
         }
     }
 
@@ -313,7 +313,7 @@ final class BrowserViewModel {
             Task { await scanner.invalidate(item.url.path) }
             reload()
         } catch {
-            errorMessage = "移到废纸篓失败：\(error.localizedDescription)"
+            errorMessage = L("移到废纸篓失败：%@", error.localizedDescription)
         }
     }
 

@@ -4,7 +4,7 @@ import AppKit
 /// Thin wrappers over the file-system operations the browser exposes.
 /// Each returns the resulting URL (or throws) so the caller can refresh.
 enum FileOps {
-    static func newFolder(in parent: URL, name: String = "未命名文件夹") throws -> URL {
+    static func newFolder(in parent: URL, name: String = L("未命名文件夹")) throws -> URL {
         var url = parent.appendingPathComponent(name, isDirectory: true)
         var i = 2
         while FileManager.default.fileExists(atPath: url.path) {
@@ -33,7 +33,8 @@ enum FileOps {
         if FileManager.default.fileExists(atPath: dest.path) {
             let base = url.deletingPathExtension().lastPathComponent
             let ext = url.pathExtension
-            let copyName = ext.isEmpty ? "\(base) 副本" : "\(base) 副本.\(ext)"
+            let suffix = L("副本")
+            let copyName = ext.isEmpty ? "\(base) \(suffix)" : "\(base) \(suffix).\(ext)"
             dest = directory.appendingPathComponent(copyName)
         }
         try FileManager.default.copyItem(at: url, to: dest)
