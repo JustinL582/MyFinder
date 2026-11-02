@@ -19,3 +19,20 @@
 
 ### 构建/运行
 `cd MyFinderTool2.fresh && swift build && swift run MyFinder`。非沙盒可执行程序，直接读所选目录。`swift build` 实测通过（Swift 6.4.2 工具链，-swift-version 5）。
+
+## 2026-11-02 增补
+
+### 分栏视图为什么要按路径建多列
+初版分栏只渲染当前目录一列，不符合 Finder「各级目录并排」的核心体验。改为 `rebuildFromPath`：从根（主目录或 `/`）沿当前路径算出目录链，每级一列并标记选中的子项，进入深层自动滚到最右。
+
+### 分栏为什么要单独触发体积扫描
+主列表 `vm.items` 由 `startSizeScan` 自动算体积，但分栏其它列是 `sortedChildren` 现做的 `FileItem`，不走那条路径，所以会一直显示 `--`。新增 `scanColumnSizes(_:)`：分栏每开一列就对该列文件夹跑一次有界并发扫描；扫描逻辑抽成 `makeSizeScan(for:)` 复用。离开目录时连同列扫描任务一起取消。
+
+### 排序模型
+`SortKey`（名称/种类/修改日期/大小）封装 `comparator(ascending:)` 与 `keyPath`；`setSort` 写回 `sortComparators`（列表 Table 也绑它，保持同步），点同一键切换升降序。右键菜单 `SortByMenu` 四视图通用，分栏用 `.onChange(of: sortComparators)` 重建列。
+
+### 关窗即退出
+SwiftUI 默认关最后一个窗口不退出、进程驻留后台占内存。加 `AppDelegate` 实现 `applicationShouldTerminateAfterLastWindowClosed → true`，经 `@NSApplicationDelegateAdaptor` 接入。
+
+### 打包与隐私
+`打包App.command`：release 编译 → 组装 `MyFinder.app`（`MacOS/` 二进制、`Resources/MyFinder.icns`、`Info.plist`）→ ad-hoc 签名。图标由 AppKit 矢量脚本渲染各尺寸 + `iconutil` 生成 `.icns`。仓库公开，提交统一用匿名 `255309524+JustinL582@users.noreply.github.com`（全局 git 邮箱也已改），Bundle ID 去掉个人名改为 `com.myfinder.app`。

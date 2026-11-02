@@ -1,5 +1,22 @@
 # CHANGELOG — 自建 Finder
 
+## 2026-11-02 — 排序、图标与打包
+
+### 新增
+- 右键「排序方式」菜单：名称 / 种类 / 修改日期 / 大小，再点当前项切换升/降序；右键项目或空白处均可，四视图通用。
+- 应用图标（矢量绘制 → `MyFinder.icns`）与可双击启动的 `MyFinder.app`；根目录 `打包App.command` 一键重新打包（release 编译 + 图标 + `Info.plist` + ad-hoc 签名）。
+
+### 改进
+- 分栏视图（Miller columns）改为沿当前路径逐级展开的多列并排，进入深层目录自动滚到最右。
+- 分栏每开一列即自动后台测算该列所有子文件夹体积，无需双击钻取；分栏行也显示文件夹大小。
+- 界面配色：半透明侧边栏、内容区文稿白底、分栏选中项主题色高亮，减轻发灰。
+- 关闭窗口即退出进程，不再驻留后台占内存（`AppDelegate.applicationShouldTerminateAfterLastWindowClosed`）。
+
+### 其他
+- 清理体积扫描的 Sendable 并发警告，现零警告编译。
+- Bundle ID 设为 `com.myfinder.app`（移除个人名）。
+- 初始化 git 仓库并推送到 GitHub（提交使用匿名 noreply 邮箱）：https://github.com/JustinL582/MyFinder
+
 ## 2026-11-01 — 重构为 Finder 风格文件浏览器
 
 ### 修复

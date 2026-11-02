@@ -24,6 +24,12 @@
 
 标签系统、多标签页/多窗口、全局递归搜索、列表内联展开三角、拖拽移动的完整实现、按修改时间精确失效缓存、沙盒 `.app` 打包（security-scoped bookmark）、体积占比横条。
 
+## 打包与仓库
+
+- 已提供**非沙盒、可双击启动**的 `MyFinder.app`，由根目录 `打包App.command` 生成（release 编译 + 图标 + `Info.plist` + ad-hoc 签名）。Bundle ID `com.myfinder.app`，关窗即退出。
+- 沙盒化分发（security-scoped bookmark）仍列为后续。
+- 源码仓库：https://github.com/JustinL582/MyFinder （提交使用匿名 noreply 邮箱）。
+
 ## 设计原型
 
 交互原型（Claude Artifact，示例数据）：https://claude.ai/artifact/R9PJGKqE3DsBz2tij29F4K
