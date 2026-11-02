@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Swift Package / build products
+.build/
+MyFinderTool2.fresh/.build/
+MyFinderTool2.fresh/.swiftpm/
+
+# 打包产物（可由 打包App.command 重新生成）
+MyFinder.app/
+
+# Xcode user state
+*.xcuserstate
+xcuserdata/
